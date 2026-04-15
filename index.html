@@ -45,24 +45,49 @@
 
     .hero {
       position: relative;
-      padding: 72px 24px 56px;
+      display: flex;
+      align-items: stretch;
+      padding: 0;
       overflow: hidden;
       border-bottom: 1px solid var(--line);
-      background:
-        linear-gradient(140deg, rgba(17, 74, 56, 0.82), rgba(29, 107, 82, 0.72)),
-        url('image2.png') right center / cover no-repeat;
+      background: linear-gradient(140deg, rgba(17, 74, 56, 0.97), rgba(29, 107, 82, 0.92));
       color: #fdf8ee;
     }
 
-    .hero::after {
-      content: "";
+    .hero-text {
+      flex: 1;
+      padding: 72px 40px 56px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-image {
+      flex: 0 0 42%;
+      max-width: 42%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
       position: absolute;
-      inset: auto -80px -120px auto;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(242, 184, 75, 0.94) 0%, rgba(242, 184, 75, 0.1) 62%, transparent 70%);
-      filter: blur(2px);
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        flex-direction: column;
+      }
+      .hero-text {
+        padding: 56px 18px 32px;
+      }
+      .hero-image {
+        flex: 0 0 280px;
+        max-width: 100%;
+      }
     }
 
     .eyebrow {
@@ -86,8 +111,6 @@
     }
 
     .hero p {
-      position: relative;
-      z-index: 1;
       max-width: 640px;
       margin: 20px 0 0;
       font-size: clamp(1rem, 2.4vw, 1.25rem);
@@ -96,8 +119,6 @@
     }
 
     .hero-links {
-      position: relative;
-      z-index: 1;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
@@ -296,12 +317,17 @@
 <body>
   <main class="page">
     <section class="hero">
-      <span class="eyebrow">11 July 2026</span>
-      <h1>Sligo, sea, sauna, pints.</h1>
-      <div class="hero-links">
-        <a href="https://www.google.com/maps/search/Rosses+Point+Sligo" target="_blank" rel="noreferrer">Open Rosses Point</a>
-        <a href="https://www.google.com/maps/search/Coney+Island+Sligo" target="_blank" rel="noreferrer">Open Coney Island</a>
-        <a href="https://www.google.com/maps/search/Donaghys+Bar+Sligo" target="_blank" rel="noreferrer">Open Donaghy's</a>
+      <div class="hero-text">
+        <span class="eyebrow">11 July 2026</span>
+        <h1>Sligo, sea, sauna, pints.</h1>
+        <div class="hero-links">
+          <a href="https://www.google.com/maps/search/Rosses+Point+Sligo" target="_blank" rel="noreferrer">Open Rosses Point</a>
+          <a href="https://www.google.com/maps/search/Coney+Island+Sligo" target="_blank" rel="noreferrer">Open Coney Island</a>
+          <a href="https://www.google.com/maps/search/Donaghys+Bar+Sligo" target="_blank" rel="noreferrer">Open Donaghy's</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="image2.png" alt="Stag day">
       </div>
     </section>
 
